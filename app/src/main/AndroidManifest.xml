@@ -16,8 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.ResultActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.DetailAlumniActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Alumni"></activity>
+        <activity
+            android:name=".activity.ListAlumni"
+            android:label="Data Alumni"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.ResultActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.UbahPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar" />

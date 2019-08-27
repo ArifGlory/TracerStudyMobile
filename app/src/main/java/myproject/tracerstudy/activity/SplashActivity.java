@@ -111,6 +111,12 @@ public class SplashActivity extends AppCompatActivity {
         JSONArray jsonArray2 = new JSONArray(response);
         Log.d("ukuranJarray",""+jsonArray2.length());
 
+        if (jsonArray2.length() == 0){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         for (int d=0;d<jsonArray2.length();d++){
             JSONObject jojo = jsonArray2.getJSONObject(d);
