@@ -135,11 +135,12 @@ public class ListAlumni extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position > 0){
-                    String idJurusan    = listIdJurusan.get(position).toString();
+                        String idJurusan    = listIdJurusan.get(position).toString();
                     String tahun        = listTahun.get(spTahunLulus.getSelectedItemPosition());
                     Log.d("idJurusan :",""+idJurusan);
                     Log.d("tahun:",tahun);
 
+                    pDialogLoading.show();
                     filterData(tahun,idJurusan);
 
                 }
@@ -351,7 +352,6 @@ public class ListAlumni extends AppCompatActivity {
                     JSONArray jsonArray2 = new JSONArray(response);
                     Log.d("jmlLowongan",""+jsonArray2.length());
 
-                    alumniList.clear();
 
                     for (int d=0;d<jsonArray2.length();d++){
                         JSONObject jojo = jsonArray2.getJSONObject(d);
@@ -397,7 +397,6 @@ public class ListAlumni extends AppCompatActivity {
                     JSONArray jsonArray2 = new JSONArray(response);
                     Log.d("jmlLowongan",""+jsonArray2.length());
 
-                    alumniList.clear();
 
                     for (int d=0;d<jsonArray2.length();d++){
                         JSONObject jojo = jsonArray2.getJSONObject(d);

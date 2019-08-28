@@ -55,6 +55,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.ListLowongan"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="Lowongan" />
         <activity
             android:name=".activity.HomeActivity"
