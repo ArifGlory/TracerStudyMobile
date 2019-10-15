@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import myproject.tracerstudy.Kelas.SharedVariable;
 import myproject.tracerstudy.Kelas.UserPreference;
@@ -20,9 +24,10 @@ public class MyProfilActivity extends AppCompatActivity {
 
     LinearLayout lineUbah,lineKeluar,linePassword;
     CircleImageView ivProfPict;
-    TextView tvName,tvNISN,tvEmail,tvPhone,tvAlamat,tvPekerjaan;
+    TextView tvName,tvNIS,tvAgama,tvTahunLulus,tvAlamat,tvPekerjaan,tvNama2,tvJenisKelamin,tvTtl;
     UserPreference mUserPref;
     String urlGambar;
+    Date dateTL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +41,38 @@ public class MyProfilActivity extends AppCompatActivity {
         linePassword = findViewById(R.id.linePassword);
         ivProfPict = findViewById(R.id.ivProfPict);
         tvName = findViewById(R.id.tvName);
-        tvNISN = findViewById(R.id.tvNISN);
-        tvEmail = findViewById(R.id.tvEmail);
-        tvPhone = findViewById(R.id.tvPhone);
+        tvNama2 = findViewById(R.id.tvNama2);
+        tvNIS = findViewById(R.id.tvNIS);
+        tvAgama = findViewById(R.id.tvAgama);
+        tvJenisKelamin = findViewById(R.id.tvJenisKelamin);
+        tvTahunLulus = findViewById(R.id.tvTahunLulus);
         tvAlamat = findViewById(R.id.tvAlamat);
         tvPekerjaan = findViewById(R.id.tvPekerjaan);
+        tvTtl = findViewById(R.id.tvTtl);
 
 
 
         Glide.with(this)
                 .load(mUserPref.getFoto())
                 .into(ivProfPict);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat format2 =  new SimpleDateFormat("dd-F-yyyy");
+        String tanggalLahir = mUserPref.getTanggalLahir();
+        try {
+            dateTL = format.parse(tanggalLahir);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        tvTtl.setText(mUserPref.getTempatLahir()+", "+new SimpleDateFormat("dd-MM-yyyy").format(dateTL));
         tvAlamat.setText(mUserPref.getAlamat());
-        tvNISN.setText("NISN :"+mUserPref.getNisn());
+        tvNIS.setText("NIS :"+mUserPref.getNis());
         tvName.setText(mUserPref.getNama());
-        tvEmail.setText(mUserPref.getEmail());
-        tvPhone.setText(mUserPref.getNope());
+        tvNama2.setText(mUserPref.getNama());
+        tvAgama.setText(mUserPref.getAgama());
+        tvTahunLulus.setText("Kelulusan "+mUserPref.getTahunLulus());
         tvPekerjaan.setText(mUserPref.getPekerjaan());
+        tvJenisKelamin.setText(mUserPref.getJenisKelamin());
 
         lineUbah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +85,7 @@ public class MyProfilActivity extends AppCompatActivity {
         lineKeluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mUserPref.setIsLoggedIn(null);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }

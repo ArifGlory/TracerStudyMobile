@@ -104,7 +104,7 @@
                             tools:ignore="VectorDrawableCompat" />
 
                         <TextView
-                            android:id="@+id/tvNISN"
+                            android:id="@+id/tvNIS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
@@ -112,7 +112,7 @@
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="NISN : 12929293929292"
+                            android:text="NIS : 12929293929292"
                             android:textColor="@color/grey_800"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -133,22 +133,21 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            card_view:srcCompat="@drawable/ic_email_black_24dp"
+                            card_view:srcCompat="@drawable/ic_account_box_black_24dp"
                             tools:ignore="VectorDrawableCompat" />
 
                         <TextView
-                            android:id="@+id/tvEmail"
+                            android:id="@+id/tvNama2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
-                            android:text="emailku@gmail.com"
                             android:maxLines="1"
+                            android:text="Nama"
                             android:textColor="@color/grey_800"
                             android:textSize="16sp" />
-
                     </LinearLayout>
 
                     <View
@@ -157,8 +156,6 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="#cccccc" />
-
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -169,11 +166,11 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            card_view:srcCompat="@drawable/ic_smartphone_black_24dp"
+                            card_view:srcCompat="@drawable/ic_account_box_black_24dp"
                             tools:ignore="VectorDrawableCompat" />
 
                         <TextView
-                            android:id="@+id/tvPhone"
+                            android:id="@+id/tvJenisKelamin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
@@ -181,7 +178,39 @@
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="089999999999"
+                            android:text="Jenis Kelamin"
+                            android:textColor="@color/grey_800"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            card_view:srcCompat="@drawable/ic_child_care_black_24dp"
+                            tools:ignore="VectorDrawableCompat" />
+
+                        <TextView
+                            android:id="@+id/tvTtl"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ellipsize="end"
+                            android:text="TTl"
                             android:textColor="@color/grey_800"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -234,6 +263,41 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            card_view:srcCompat="@drawable/ic_star_black_24dp"
+                            tools:ignore="VectorDrawableCompat" />
+
+                        <TextView
+                            android:id="@+id/tvAgama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ellipsize="end"
+                            android:text="agama"
+                            android:maxLines="1"
+                            android:textColor="@color/grey_800"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
                             card_view:srcCompat="@drawable/ic_work_black_24dp"
                             tools:ignore="VectorDrawableCompat" />
 
@@ -246,6 +310,39 @@
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
                             android:text="Designer"
+                            android:textColor="@color/grey_800"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            card_view:srcCompat="@drawable/ic_date_range_black_24dp"
+                            tools:ignore="VectorDrawableCompat" />
+
+                        <TextView
+                            android:id="@+id/tvTahunLulus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Kelulusan 2016"
                             android:textColor="@color/grey_800"
                             android:textSize="16sp" />
                     </LinearLayout>

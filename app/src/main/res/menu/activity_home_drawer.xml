@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Kuesioner" />
         <item
+            android:id="@+id/nav_alumni"
+            android:icon="@drawable/ic_account_box_black_24dp"
+            android:title="Alumni" />
+        <item
             android:id="@+id/nav_lowongan"
             android:icon="@drawable/ic_work_black_24dp"
             android:title="Lowongan" />

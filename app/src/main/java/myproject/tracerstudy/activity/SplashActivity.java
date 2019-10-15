@@ -132,6 +132,11 @@ public class SplashActivity extends AppCompatActivity {
             String foto = jojo.getString("foto");
             String idJurusan = jojo.getString("id_jurusan");
             String password = jojo.getString("password");
+            String jenis_kelamin = jojo.getString("jenis_kelamin");
+            String tempat_lahir = jojo.getString("tempat_lahir");
+            String tanggal_lahir = jojo.getString("tanggal_lahir");
+            String agama = jojo.getString("agama");
+            String tahun_lulus = jojo.getString("tahun_lulus");
             Log.d("nama alumni : ",nama_alumni);
 
             if (foto.substring(0,4).equals("http")){
@@ -150,6 +155,11 @@ public class SplashActivity extends AppCompatActivity {
             mUserpref.setFoto(urlGambar);
             mUserpref.setIdJurusan(idJurusan);
             mUserpref.setPassword(password);
+            mUserpref.setJenisKelamin(jenis_kelamin);
+            mUserpref.setTempatLahir(tempat_lahir);
+            mUserpref.setTanggalLahir(tanggal_lahir);
+            mUserpref.setAgama(agama);
+            mUserpref.setTahunLulus(tahun_lulus);
 
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);

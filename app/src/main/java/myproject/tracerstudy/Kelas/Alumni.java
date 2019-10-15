@@ -15,8 +15,14 @@ public class Alumni implements Serializable {
     public String alamat;
     public String pekerjaan;
     public String foto;
+    public String jenis_kelamin;
+    public String tempat_lahir;
+    public String tanggal_lahir;
+    public String agama;
 
-    public Alumni(String idAlumni, String nama, String tahun_lulus, String idJurusan, String nis, String nisn, String phone, String email, String alamat, String pekerjaan, String foto) {
+    public Alumni(String idAlumni, String nama, String tahun_lulus, String idJurusan, String nis, String nisn, String phone,
+                  String email, String alamat, String pekerjaan, String foto ,String jenis_kelamin
+                    , String tempat_lahir,String tanggal_lahir,String agama) {
         this.idAlumni = idAlumni;
         this.nama = nama;
         this.tahun_lulus = tahun_lulus;
@@ -28,9 +34,45 @@ public class Alumni implements Serializable {
         this.alamat = alamat;
         this.pekerjaan = pekerjaan;
         this.foto = foto;
+        this.jenis_kelamin = jenis_kelamin;
+        this.tempat_lahir = tempat_lahir;
+        this.tanggal_lahir = tanggal_lahir;
+        this.agama = agama;
     }
 
     public Alumni(){}
+
+    public String getJenis_kelamin() {
+        return jenis_kelamin;
+    }
+
+    public void setJenis_kelamin(String jenis_kelamin) {
+        this.jenis_kelamin = jenis_kelamin;
+    }
+
+    public String getTempat_lahir() {
+        return tempat_lahir;
+    }
+
+    public void setTempat_lahir(String tempat_lahir) {
+        this.tempat_lahir = tempat_lahir;
+    }
+
+    public String getTanggal_lahir() {
+        return tanggal_lahir;
+    }
+
+    public void setTanggal_lahir(String tanggal_lahir) {
+        this.tanggal_lahir = tanggal_lahir;
+    }
+
+    public String getAgama() {
+        return agama;
+    }
+
+    public void setAgama(String agama) {
+        this.agama = agama;
+    }
 
     public String getIdAlumni() {
         return idAlumni;

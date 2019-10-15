@@ -150,7 +150,11 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), ListLowongan.class);
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
+            mUserPref.setIsLoggedIn(null);
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_alumni) {
+            Intent intent = new Intent(getApplicationContext(), ListAlumni.class);
             startActivity(intent);
         }
 

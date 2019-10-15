@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -41,7 +42,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import myproject.tracerstudy.Kelas.Alumni;
@@ -64,6 +67,7 @@ public class ListAlumni extends AppCompatActivity {
     ArrayAdapter<String> adapterTahun;
     ImageButton btnRefresh;
     private HttpResponse response;
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +145,12 @@ public class ListAlumni extends AppCompatActivity {
                     Log.d("tahun:",tahun);
 
                     pDialogLoading.show();
-                    filterData(tahun,idJurusan);
+                    //filterData(tahun,idJurusan);
+                    try {
+                        filterAlumni(tahun,idJurusan);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
                 }
 
@@ -232,6 +241,10 @@ public class ListAlumni extends AppCompatActivity {
                             String tahun_lulus = jojo.getString("tahun_lulus");
                             String pekerjaan = jojo.getString("pekerjaan");
                             String id_jurusan = jojo.getString("id_jurusan");
+                            String jenis_kelamin = jojo.getString("jenis_kelamin");
+                            String tempat_lahir = jojo.getString("tempat_lahir");
+                            String tanggal_lahir = jojo.getString("tanggal_lahir");
+                            String agama = jojo.getString("agama");
                             String foto = jojo.getString("foto");
 
                             Alumni alumni = new Alumni(id_alumni,
@@ -244,7 +257,11 @@ public class ListAlumni extends AppCompatActivity {
                                     email,
                                     alamat,
                                     pekerjaan,
-                                    foto);
+                                    foto,
+                                    jenis_kelamin,
+                                    tempat_lahir,
+                                    tanggal_lahir,
+                                    agama);
                             alumniList.add(alumni);
                         }
                         adapter.notifyDataSetChanged();
@@ -271,6 +288,91 @@ public class ListAlumni extends AppCompatActivity {
         }
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
         sendPostReqAsyncTask.execute(tahun,idJurusan);
+    }
+
+    private void filterAlumni(final String tahun,final String idJurusan) throws JSONException {
+        String url = SharedVariable.ipServer+"/filterAlumni/";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        pDialogLoading.dismiss();
+                        Log.d("MYLaporan", response.toString());
+                        alumniList.clear();
+
+                        JSONArray jsonArray2 = null;
+                        try {
+                            jsonArray2 = new JSONArray(response);
+                            Log.d("jmltanggapan",""+jsonArray2.length());
+
+                            for (int d=0; d < jsonArray2.length(); d++){
+                                JSONObject jojo = jsonArray2.getJSONObject(d);
+
+                                Log.d("arrayNya:", "" + jojo.toString());
+
+                                String id_alumni = jojo.getString("id_alumni");
+                                String nis = jojo.getString("nis");
+                                String nisn = jojo.getString("nisn");
+                                String nama_alumni = jojo.getString("nama_alumni");
+                                String no_hape = jojo.getString("no_hape");
+                                String email = jojo.getString("email");
+                                String alamat = jojo.getString("alamat");
+                                String tahun_lulus = jojo.getString("tahun_lulus");
+                                String pekerjaan = jojo.getString("pekerjaan");
+                                String id_jurusan = jojo.getString("id_jurusan");
+                                String jenis_kelamin = jojo.getString("jenis_kelamin");
+                                String tempat_lahir = jojo.getString("tempat_lahir");
+                                String tanggal_lahir = jojo.getString("tanggal_lahir");
+                                String agama = jojo.getString("agama");
+                                String foto = jojo.getString("foto");
+
+                                Alumni alumni = new Alumni(id_alumni,
+                                        nama_alumni,
+                                        tahun_lulus,
+                                        id_jurusan,
+                                        nis,
+                                        nisn,
+                                        no_hape,
+                                        email,
+                                        alamat,
+                                        pekerjaan,
+                                        foto,
+                                        jenis_kelamin,
+                                        tempat_lahir,
+                                        tanggal_lahir,
+                                        agama);
+                                alumniList.add(alumni);
+                            }
+                            adapter.notify();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pDialogLoading.dismiss();
+                        //Log.d("ErrTanggapan", error.toString());
+                        Toast.makeText(getApplicationContext(),"terjadi kesalahan, coba lagi nanti",Toast.LENGTH_SHORT).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("tahun_lulus", tahun);
+                params.put("id_jurusann", idJurusan);
+                return params;
+            }
+        };
+
+
+        addToRequestQueue(stringRequest,"filterRequest");
     }
 
     private void getDataAlumni(){
@@ -302,6 +404,10 @@ public class ListAlumni extends AppCompatActivity {
                         String tahun_lulus = jojo.getString("tahun_lulus");
                         String pekerjaan = jojo.getString("pekerjaan");
                         String id_jurusan = jojo.getString("id_jurusan");
+                        String jenis_kelamin = jojo.getString("jenis_kelamin");
+                        String tempat_lahir = jojo.getString("tempat_lahir");
+                        String tanggal_lahir = jojo.getString("tanggal_lahir");
+                        String agama = jojo.getString("agama");
                         String foto = jojo.getString("foto");
 
                         Alumni alumni = new Alumni(id_alumni,
@@ -314,7 +420,11 @@ public class ListAlumni extends AppCompatActivity {
                                 email,
                                 alamat,
                                 pekerjaan,
-                                foto);
+                                foto,
+                                jenis_kelamin,
+                                tempat_lahir,
+                                tanggal_lahir,
+                                agama);
                         alumniList.add(alumni);
                     }
                     adapter.notifyDataSetChanged();
@@ -424,5 +534,17 @@ public class ListAlumni extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
+    }
+
+    public RequestQueue getRequestQueue() {
+        if (requestQueue == null)
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        return requestQueue;
+    }
+
+
+    public void addToRequestQueue(Request request, String tag) {
+        request.setTag(tag);
+        getRequestQueue().add(request);
     }
 }
