@@ -299,7 +299,11 @@ public class ListAlumni extends AppCompatActivity {
                     public void onResponse(String response) {
                         pDialogLoading.dismiss();
                         Log.d("MYLaporan", response.toString());
+
+                        int prevSize = alumniList.size();
+
                         alumniList.clear();
+                        adapter.notifyItemRangeRemoved(0,prevSize);
 
                         JSONArray jsonArray2 = null;
                         try {
@@ -344,7 +348,8 @@ public class ListAlumni extends AppCompatActivity {
                                         agama);
                                 alumniList.add(alumni);
                             }
-                            adapter.notify();
+                            adapter.notifyDataSetChanged();
+                           // adapter.notifyItemRangeRemoved(0,prevSize);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
